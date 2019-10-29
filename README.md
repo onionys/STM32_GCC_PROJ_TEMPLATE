@@ -36,3 +36,43 @@ These templates are based on the templates in the STM32Cube SDK.
 
 # Example
 
+```
+    git clone https://github.com/onionys/STM32_GCC_PROJ_TEMPLATE.git stm32_proj
+    cd stm32_proj
+```
+
+modify `Makefile` as follow...
+
+```
+    ...
+    STM32SDK = <absolute path of STM32Cube SDK>
+    ...
+```
+
+for example 
+
+```
+    ################################
+    ## Makefile for STM32F7 Series
+    ################################
+    STM32SDK = /home/user/STM32Cube_FW_F7_V1.15.0
+    ...
+```
+
+and then make all
+
+```
+    make all
+```
+
+if build ok, you could find the `firmware.bin` 
+and be able to flash it to MCU by follwing command:
+
+this procedure requires the `st-link` tools installed.
+
+```
+    make flash
+```
+
+
+
