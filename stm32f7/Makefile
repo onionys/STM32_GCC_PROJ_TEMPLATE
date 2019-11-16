@@ -1,7 +1,7 @@
 ################################
 ## Makefile for STM32F7 Series
 ################################
-STM32SDK = ../../STM32Cube_FW_F7_V1.15.0
+STM32SDK = ../STM32Cube_FW_F7_V1.15.0
 PROJ_DIR = .
 BUILD_DIR = $(PROJ_DIR)/build
 
@@ -14,10 +14,16 @@ LD_FILE = ./STM32F746ZGTx_FLASH_AXIM.ld
 ###############################
 # GCC Tool Chain Prefix Setup #
 ###############################
-CC = arm-none-eabi-gcc
-OBJDUMP = arm-none-eabi-objdump
-OBJCOPY = arm-none-eabi-objcopy
-GDB = arm-none-eabi-gdb
+ARM_GCC_PATH= ../gcc-arm-none-eabi-4_8-2014q3/bin
+CC = $(ARM_GCC_PATH)/arm-none-eabi-gcc
+OBJDUMP = $(ARM_GCC_PATH)/arm-none-eabi-objdump
+OBJCOPY = $(ARM_GCC_PATH)/arm-none-eabi-objcopy
+GDB = $(ARM_GCC_PATH)/arm-none-eabi-gdb
+
+##########################
+# stlink tool path setup #
+##########################
+ST_LINK_PATH = ../stlink/build/Release
 
 ##########
 # DEFINE #
@@ -198,7 +204,7 @@ all: $(OBJS)
 # 	$(OBJCOPY) -O binary $(BUILD_DIR)/firmware.elf $(BUILD_DIR)/firmware.bin
 
 flash:
-	st-flash write ./build/firmware.bin 0x8000000
+	$(ST_LINK_PATH)/st-flash write ./build/firmware.bin 0x8000000
 
 clean: 
 	rm -fr $(BUILD_DIR)

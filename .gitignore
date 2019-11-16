@@ -1,3 +1,5 @@
 
 _tmp/*
 _tmp/**
+*/build/*
+*/build/**
